@@ -14,6 +14,9 @@ colors = {
     },
 }
 
+//Current Mode for Dark & Light Mode
+let CurrentMode = 'dark'
+
 //Base Variables
 const TemplateCountry = document.getElementById('Template-Country')
 const MainFrame = document.getElementById('Main-Frame')
@@ -33,6 +36,7 @@ const CF_BorderCountries = document.getElementById('Border-List')
 const CF_BorderTemp = document.getElementById('Border-Country-Temp')
 //other stuff
 const Search = document.getElementById('Search-Frame')
+const Mode = document.getElementById('Mode-Frame')
 const UserInput = document.getElementById('User-Input')
 const SearchButton = document.getElementById('Search-Button')
 const DropDownB = document.getElementById('Drop-Down-Button')
@@ -61,7 +65,6 @@ function GetTag(nam, req) {
 
 function GetNativeName(Nati){
     let Got
-    console.log(Nati)
     for (let k in Nati) {
         Got = Nati[k].common
         break
@@ -97,7 +100,7 @@ function CreateCountry(CountryData){
     //Update NewCountry
     NewCountry.style.display = 'flex'
     NewCountry.id = CountryID
-    NewCountry.className = 'Country'
+    NewCountry.className = 'Country Base'
     NewCountry.countrytag = CountryTag
 
     //Update Info & Flag
@@ -239,6 +242,25 @@ function SearchFunction(){
     })
 }
 
+function ChangeMode() {
+    //Getting elements by classname
+    let GetBase = document.getElementsByClassName('Base')
+    let GetBG = document.getElementsByClassName('BG')
+    let GetTx = document.getElementsByClassName('Txt')
+
+    for (i=0;i<GetBase.length;i++){ //Get all bases & swap their col
+        GetBase[i].style.backgroundColor = colors[CurrentMode].Base
+    }
+
+    for (i=0;i<GetBG.length;i++){ //Get all bases & swap their col
+        GetBG[i].style.backgroundColor = colors[CurrentMode].Background
+    }
+
+    for (i=0;i<GetTx.length;i++){ //All text
+        GetTx[i].style.color = colors[CurrentMode].TextCol
+    }
+}
+
 UserInput.addEventListener('keypress', function(Ev) {
     if (Ev.key === 'Enter') {
         SearchFunction()
@@ -246,3 +268,12 @@ UserInput.addEventListener('keypress', function(Ev) {
 })
 
 SearchButton.addEventListener('click', SearchFunction)
+
+Mode.addEventListener('click', function() {
+    if (CurrentMode === 'dark') {
+        CurrentMode = 'light'
+    } else if (CurrentMode === 'light') {
+        CurrentMode = 'dark'
+    }
+    ChangeMode()
+})
