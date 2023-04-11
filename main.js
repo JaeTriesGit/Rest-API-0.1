@@ -33,6 +33,8 @@ const CF_BorderCountries = document.getElementById('Border-List')
 const CF_BorderTemp = document.getElementById('Border-Country-Temp')
 //other stuff
 const Search = document.getElementById('Search-Frame')
+const UserInput = document.getElementById('User-Input')
+const SearchButton = document.getElementById('Search-Button')
 const DropDownB = document.getElementById('Drop-Down-Button')
 const DropDownM = document.getElementById('Drop-Down-Menu')
 const DropDownRegions = document.querySelectorAll('.Region-Select')
@@ -57,6 +59,16 @@ function GetTag(nam, req) {
     return null
 }
 
+function GetNativeName(Nati){
+    let Got
+    console.log(Nati)
+    for (let k in Nati) {
+        Got = Nati[k].common
+        break
+    }
+    return Got
+}
+
 //Function to create the country based on CountryData
 function CreateCountry(CountryData){
     //Set data variables
@@ -70,9 +82,9 @@ function CreateCountry(CountryData){
     const Domain = CountryData.tld
     const Currencies = CountryData.currencies
     const CountryTag = CountryData.cca3
-    const NativeName = CountryData.name.nativeName
+    const NativeName = GetNativeName(CountryData.name.nativeName) //We gotta fight with this later
     const Borders = CountryData.borders
-    
+
     //Set new template
     let NewCountry = TemplateCountry.cloneNode(true)
     let CountryFlag = NewCountry.querySelector(".flag")
@@ -83,9 +95,9 @@ function CreateCountry(CountryData){
     let CountryCapital = CountryInfo.querySelector('.Capital')
 
     //Update NewCountry
-    NewCountry.style.display='flex'
+    NewCountry.style.display = 'flex'
     NewCountry.id = CountryID
-    NewCountry.className='Country'
+    NewCountry.className = 'Country'
     NewCountry.countrytag = CountryTag
 
     //Update Info & Flag
@@ -130,20 +142,21 @@ function CreateCountry(CountryData){
         CF_Languages.innerHTML = '<span>Languages: </span>'+Langs.join(', ')
         CF_Domain.innerHTML = '<span>Top Level Domain: </span>'+Domain
         CF_Currencies.innerHTML = '<span>Currencies: </span>'+Currs3.join(', ')
-        CF_NativeName.innerHTML = '<span>Native Names: </span>'+NativeName
+        CF_NativeName.innerHTML = '<span>Native Name: </span>'+NativeName
 
-        const xd = CF_BorderCountries.getElementsByClassName('Border-Country')
+        let xd = CF_BorderCountries.querySelectorAll('.Border-Country')
 
-        for (i=0;i<xd.length;i++){//This was a sad attempt at making the border countries work
-            xd[i].remove()
-        }
-        if (Borders !== undefined) { //sum tins wong
+        xd.forEach((Obj) => {
+            Obj.remove()
+        })
+        
+        if (Borders !== undefined) { 
             CF_BorderTemp.style.display='none'
             for (i=0;i<Borders.length;i++){
                 let NewTemp = CF_BorderTemp.cloneNode()
                 NewTemp.className = 'Border-Country'
                 NewTemp.style.display='initial'
-                NewTemp.innerText = Borders[i]
+                NewTemp.innerText = GetTag(Borders[i], 'GetFullName')
                 CF_BorderCountries.appendChild(NewTemp)
             }
         } else if (Borders === undefined){
@@ -162,7 +175,6 @@ fetch('https://restcountries.com/v3.1/all') //Fetch from the url
 }).then(NewData => { //NewData is all of our info
     NewData.forEach(e => {
         CountryID += 1
-        console.log(e)
         CreateCountry(e)
     })
 })
@@ -201,3 +213,36 @@ for (i=0;i<DropDownRegions.length;i++) {
         ShowRegion(GetRegion)
     })
 })
+
+function SearchFunction(){
+    const SearchFor = UserInput.value //Finland, for example, or just fi etc.
+    const fullString = `https://restcountries.com/v3.1/name/${SearchFor}`
+
+    const GetAll = document.getElementsByClassName('Country')
+
+    fetch(fullString).then(data => {
+        if (!data.ok) {
+            throw Error(data.status)
+        }
+        return data.json()
+    }).then(NData => {
+        for (i=0;i<GetAll.length;i++) {
+            GetAll[i].style.display = 'none'
+        }
+        for (i=0;i<GetAll.length;i++) {
+            NData.forEach(Data => {
+                if (Data.name.official === GetAll[i].CountryName) {
+                    GetAll[i].style.display = 'flex'
+                }
+            })
+        }
+    })
+}
+
+UserInput.addEventListener('keypress', function(Ev) {
+    if (Ev.key === 'Enter') {
+        SearchFunction()
+    }
+})
+
+SearchButton.addEventListener('click', SearchFunction)

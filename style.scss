@@ -158,33 +158,45 @@ body{
 }
 
 #Country-Frame{
-    width:100%;
-    display:flex;
+    position:relative;
+    width:90%;
+    left:5%;
+    display:none;
     flex-direction:column;
 }
 
 #CF-Base{
     margin-top:50px;
-    width:90%;
+    width:100%;
     height:auto;
     display:flex;
     flex-direction:column;
-    //align-items:center;
+    align-items:center;
+    justify-content:center;
     align-self:center;
-    gap:20px;
+
+    @include desktop{
+        flex-direction:row;
+        gap:50px;
+    }
 }
 
 #Other-Info{
     gap:20px;
     display:flex;
     flex-direction:column;
+    @include desktop{
+        flex-direction:row;
+    }
 }
 
 #Country-Flag{
     width:100%;
     height:auto;
     max-height:300px;
+    max-width:500px;
     margin-bottom:20px;
+    aspect-ratio: 16/9;
 }
 
 #Back{
@@ -192,11 +204,15 @@ body{
     height:40px;
     background-color:hsl(209, 23%, 22%);
     box-shadow:0 5px 15px hsl(208, 24%, 12%);
+    &:hover{
+        cursor:pointer;
+    }
 }
 
 #Country-Name{
     font-size:25px;
     font-weight:800;
+    margin-bottom:20px;
 }
 
 .Region-Select{
@@ -207,7 +223,10 @@ body{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:25px;
+    position:relative;
+    width:90%;
+    left:5%;
+    gap:50px;
 
     @include desktop{
         flex-wrap:wrap;
@@ -227,6 +246,12 @@ body{
     background-color:hsl(209, 23%, 22%);
     border-radius:10px;
     overflow:hidden;
+}
+
+#Country-Extra-Info{
+    @include desktop{
+        
+    }
 }
 
 .Country-Info{
@@ -273,6 +298,9 @@ span{
 
 #Border-List{
     display:flex;
+    width:100%;
+    height:auto;
+    flex-wrap:wrap;
     gap:10px;
 }
 
@@ -287,4 +315,12 @@ span{
     padding:10px;
     background-color:hsl(209, 23%, 22%);
     border-radius:10px;
+}
+
+#Country-Native{
+    @include desktop{    
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+    }
 }

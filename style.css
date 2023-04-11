@@ -3,11 +3,11 @@
   font-weight: 300;
   padding: 0;
   margin: 0;
-  color: hsl(0, 0%, 100%);
+  color: hsl(0deg, 0%, 100%);
 }
 
 body {
-  background-color: hsl(207, 26%, 17%);
+  background-color: hsl(207deg, 26%, 17%);
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -20,8 +20,8 @@ body {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-color: hsl(209, 23%, 22%);
-  box-shadow: 0 5px 15px hsl(208, 24%, 12%);
+  background-color: hsl(209deg, 23%, 22%);
+  box-shadow: 0 5px 15px hsl(208deg, 24%, 12%);
 }
 #Top-Frame p {
   font-weight: 600;
@@ -44,7 +44,7 @@ body {
 #Search {
   width: 95%;
   height: 60px;
-  background-color: hsl(209, 23%, 22%);
+  background-color: hsl(209deg, 23%, 22%);
   border-radius: 10px;
   display: flex;
   flex-direction: row;
@@ -105,7 +105,7 @@ body {
   height: 60px;
   margin-left: 2.5%;
   border-radius: 10px;
-  background-color: hsl(209, 23%, 22%);
+  background-color: hsl(209deg, 23%, 22%);
   border: none;
   font-weight: 300;
   font-size: 16px;
@@ -145,7 +145,7 @@ body {
   flex-direction: column;
   width: 100%;
   height: auto;
-  background-color: hsl(209, 23%, 22%);
+  background-color: hsl(209deg, 23%, 22%);
   border-radius: 10px;
   margin-left: 2.5%;
   font-weight: 300;
@@ -156,19 +156,28 @@ body {
 }
 
 #Country-Frame {
-  width: 100%;
-  display: flex;
+  position: relative;
+  width: 90%;
+  left: 5%;
+  display: none;
   flex-direction: column;
 }
 
 #CF-Base {
   margin-top: 50px;
-  width: 90%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   align-self: center;
-  gap: 20px;
+}
+@media (min-width: 1440px) {
+  #CF-Base {
+    flex-direction: row;
+    gap: 50px;
+  }
 }
 
 #Other-Info {
@@ -176,24 +185,35 @@ body {
   display: flex;
   flex-direction: column;
 }
+@media (min-width: 1440px) {
+  #Other-Info {
+    flex-direction: row;
+  }
+}
 
 #Country-Flag {
   width: 100%;
   height: auto;
   max-height: 300px;
+  max-width: 500px;
   margin-bottom: 20px;
+  aspect-ratio: 16/9;
 }
 
 #Back {
   width: 150px;
   height: 40px;
-  background-color: hsl(209, 23%, 22%);
-  box-shadow: 0 5px 15px hsl(208, 24%, 12%);
+  background-color: hsl(209deg, 23%, 22%);
+  box-shadow: 0 5px 15px hsl(208deg, 24%, 12%);
+}
+#Back:hover {
+  cursor: pointer;
 }
 
 #Country-Name {
   font-size: 25px;
   font-weight: 800;
+  margin-bottom: 20px;
 }
 
 .Region-Select {
@@ -204,7 +224,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  position: relative;
+  width: 90%;
+  left: 5%;
+  gap: 50px;
 }
 @media (min-width: 1440px) {
   #Main-Frame {
@@ -222,7 +245,7 @@ body {
   flex-direction: column;
   width: 250px;
   height: 300px;
-  background-color: hsl(209, 23%, 22%);
+  background-color: hsl(209deg, 23%, 22%);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -273,18 +296,29 @@ span {
 
 #Border-List {
   display: flex;
+  width: 100%;
+  height: auto;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
 #Border-Country-Temp {
   display: none;
   padding: 10px;
-  background-color: hsl(209, 23%, 22%);
+  background-color: hsl(209deg, 23%, 22%);
   border-radius: 10px;
 }
 
 .Border-Country {
   padding: 10px;
-  background-color: hsl(209, 23%, 22%);
+  background-color: hsl(209deg, 23%, 22%);
   border-radius: 10px;
+}
+
+@media (min-width: 1440px) {
+  #Country-Native {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
 }/*# sourceMappingURL=style.css.map */
