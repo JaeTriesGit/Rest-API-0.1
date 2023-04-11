@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name='viewport' content='width=device-width,initial-scale=1,user-scalable=0'>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
+        <link href='style.css' rel='stylesheet'>
+    </head>
+    <body>
+
+        <div id="Top-Frame">
+            <p>Where in the world?</p>
+            <div id="Mode-Frame">
+                <img id='Mode' src="./assets/icon-moon.svg">
+                <p>Dark Mode</p>
+            </div>
+        </div>
+        <div id="Search-Frame">
+            <div id="Search">
+                <img id="Search-Button" src="./assets/magnifier-svgrepo-com.svg">
+                <input id='User-Input' type="text" placeholder="Search for a country...">
+            </div>
+            <div id="DDM">
+                <button id="Drop-Down-Button">Filter by Region<img id="Arrow-Down" src="./assets/arrow-down-svgrepo-com.svg"></button>
+                <div id="Drop-Down-Menu">
+                    <p class="Region-Select" value="Africa">Africa</p>
+                    <p class="Region-Select" value="Americas">America</p>
+                    <p class="Region-Select" value="Asia">Asia</p>
+                    <p class="Region-Select" value="Europe">Europe</p>
+                    <p class="Region-Select" value="Oceania">Oceania</p>
+                    <p class="Region-Select" value="All">All</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="Main-Frame">
+
+            <div id='Template-Country' class="CountryT">
+                <img class="flag" src="">
+                <div class="Country-Info">
+                    <p class="country-name">Germany</p>
+                    <p class="Population"><span>Population: </span>999,999,999</p>
+                    <p class="Region"><span>Region: </span>Europe</p>
+                    <p class="Capital"><span>Capital: </span>Berlin</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="Country-Frame">
+            <button id="Back"><img src="">Back</button>
+            <div id="CF-Base">
+                <img id="Country-Flag" src="">
+                <div id="Country-Extra-Info">
+                    <p id="Country-Name">Germany</p>
+
+                    <div id="Other-Info">
+                        <div id="Country-Native">
+                            <p id="Country-Native-Name"><span>Native Name: </span> ok</p>
+                            <p id="Country-Population"><span>Population: </span> ok</p>
+                            <p id="Country-Region"><span>Region: </span> ok</p>
+                            <p id="Country-Sub-Region"><span>Sub Region: </span> ok</p>
+                            <p id="Country-Capital"><span>Capital: </span> ok</p>
+                        </div>
+                        <div id="Country-Extra">
+                            <p id="Country-Domain"><span>Top Level Domain: </span> ok</p>
+                            <p id="Country-Currencies"><span>Currencies: </span> ok</p>
+                            <p id="Country-Languages"><span>Languages: </span> ok</p>
+                        </div>
+                    </div>
+
+                    <div id="Border-Countries">
+                        <p id="BC">Border Countries: </p>
+                        <div id="Border-List">
+                            <p id='Border-Country-Temp'>None</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script src="main.js"></script>

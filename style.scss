@@ -1,0 +1,290 @@
+*{ //Preset
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight:300; //300, 600, 800
+    padding:0;margin:0;
+    color:hsl(0, 0%, 100%);
+}
+
+body{
+    background-color:hsl(207, 26%, 17%);
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+@mixin desktop{
+    @media (min-width:1440px){
+        @content;
+    }
+}
+
+#Top-Frame{
+    width:100%;
+    height:80px;
+    display:flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items:center;
+    background-color:hsl(209, 23%, 22%);
+    box-shadow:0 5px 15px hsl(208, 24%, 12%);
+
+    & p{
+        font-weight:600;
+    }
+}
+
+#Mode-Frame{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:15px;
+    & p{
+        font-weight:300;
+        font-size:14px;
+    }
+    &:hover{
+        cursor:pointer;
+    }
+}
+
+#Search{
+    width:95%;
+    height:60px;
+    background-color:hsl(209, 23%, 22%);
+    border-radius:10px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:center;
+    align-self:center;
+
+    & #Search-Button{
+        width:20px;height:20px;
+        filter:invert(100%);
+        &:hover{
+            cursor:pointer;
+        }
+    }
+
+    & #User-Input{
+        width:90%;
+        height:50px;
+        background:none;
+        border:none;
+        outline:none;
+        color:white;
+    }
+
+    @include desktop{
+        align-self:normal;
+        width:500px;
+    }
+}
+
+#Mode{
+    width:15px;
+    height:15px;
+    &:hover{
+        cursor:pointer;
+    }
+}
+
+#Search-Frame{
+    width:100%;
+    height:120px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+
+    @include desktop{
+        flex-direction:row;
+        justify-content:space-around;
+    }
+}
+
+#Drop-Down-Button{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    width:100%;
+    height:60px;
+    margin-left:2.5%;
+    border-radius:10px;
+    background-color:hsl(209, 23%, 22%);
+    border:none;
+    font-weight:300;
+    font-size:16px;
+    &:hover{
+        cursor:pointer;
+    }
+
+    @include desktop{
+        width:100%;
+    }
+}
+
+#Arrow-Down{
+    width:15px;
+    height:15px;
+    filter:invert(100%);
+}
+
+#DDM{
+    left:2.5%;
+    width:40%;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    @include desktop{
+        left:0;
+        width:250px;
+    }
+}
+
+#Drop-Down-Menu{
+    z-index:2;
+    display:none; //Set to Flex in JS
+    flex-direction:column;
+    width:100%;
+    height:auto;
+    background-color:hsl(209, 23%, 22%);
+    border-radius:10px;
+    margin-left:2.5%;
+    font-weight:300;
+    margin-top:10px;
+    &:hover{
+        cursor:pointer;
+    }
+}
+
+#Country-Frame{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+#CF-Base{
+    margin-top:50px;
+    width:90%;
+    height:auto;
+    display:flex;
+    flex-direction:column;
+    //align-items:center;
+    align-self:center;
+    gap:20px;
+}
+
+#Other-Info{
+    gap:20px;
+    display:flex;
+    flex-direction:column;
+}
+
+#Country-Flag{
+    width:100%;
+    height:auto;
+    max-height:300px;
+    margin-bottom:20px;
+}
+
+#Back{
+    width:150px;
+    height:40px;
+    background-color:hsl(209, 23%, 22%);
+    box-shadow:0 5px 15px hsl(208, 24%, 12%);
+}
+
+#Country-Name{
+    font-size:25px;
+    font-weight:800;
+}
+
+.Region-Select{
+    padding:10px;
+}
+
+#Main-Frame{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
+
+    @include desktop{
+        flex-wrap:wrap;
+        flex-direction:row;
+        justify-content:space-around;
+    }
+}
+
+#Template-Country{
+    display:none;
+}
+
+.Country{
+    flex-direction:column;
+    width:250px;
+    height:300px;
+    background-color:hsl(209, 23%, 22%);
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.Country-Info{
+    display:flex;
+    flex-direction:column;
+    text-align:left;
+    gap:5px;
+    padding-left:20px;
+    font-size:14px;
+}
+
+.flag{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    &:hover{
+        cursor:pointer;
+    }
+}
+
+.Region{
+    padding:0;margin:0;
+}
+
+.country-name{
+    padding-top:5px;
+    font-weight:800;
+    font-size:18px;
+    padding-bottom:15px;
+}
+
+span{
+    font-weight:600;
+}
+
+#BC{
+    font-size:16px;
+    font-weight:800;
+}
+
+#Border-Countries{
+    margin-top:20px;
+}
+
+#Border-List{
+    display:flex;
+    gap:10px;
+}
+
+#Border-Country-Temp{
+    display:none;
+    padding:10px;
+    background-color:hsl(209, 23%, 22%);
+    border-radius:10px;
+}
+
+.Border-Country{
+    padding:10px;
+    background-color:hsl(209, 23%, 22%);
+    border-radius:10px;
+}
