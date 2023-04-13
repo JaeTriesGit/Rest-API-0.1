@@ -28,7 +28,6 @@ body {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0 5px 15px hsl(208deg, 24%, 12%);
 }
 #Top-Frame p {
   font-weight: 600;
@@ -61,7 +60,6 @@ body {
 #Search #Search-Button {
   width: 20px;
   height: 20px;
-  filter: invert(100%);
 }
 #Search #Search-Button:hover {
   cursor: pointer;
@@ -127,7 +125,6 @@ body {
 #Arrow-Down {
   width: 15px;
   height: 15px;
-  filter: invert(100%);
 }
 
 #DDM {
@@ -204,10 +201,22 @@ body {
   aspect-ratio: 16/9;
 }
 
+.BoxShad {
+  box-shadow: 0px 2px 5px hsl(0deg, 0%, 9%);
+}
+
 #Back {
   width: 150px;
   height: 40px;
-  box-shadow: 0 5px 15px hsl(208deg, 24%, 12%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
 }
 #Back:hover {
   cursor: pointer;
@@ -317,8 +326,14 @@ span {
   background-color: hsl(209deg, 23%, 22%);
   border-radius: 10px;
 }
-.Border-Country:hover {
-  cursor: pointer;
+
+.Inverted {
+  filter: invert(100%);
+}
+
+.Arrow-Left {
+  width: 25px;
+  height: 25px;
 }
 
 @media (min-width: 1440px) {
