@@ -331,6 +331,10 @@ span {
   filter: invert(100%);
 }
 
+.NotInverted {
+  filter: invert(0%);
+}
+
 .Arrow-Left {
   width: 25px;
   height: 25px;

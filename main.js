@@ -43,7 +43,6 @@ const UserInput = document.getElementById('User-Input')
 const SearchButton = document.getElementById('Search-Button')
 const DropDownB = document.getElementById('Drop-Down-Button')
 const DropDownM = document.getElementById('Drop-Down-Menu')
-const DropDownArrow = document.getElementById('Arrow-Down')
 const DropDownRegions = document.querySelectorAll('.Region-Select')
 
 const Back = document.getElementById('Back')
@@ -89,7 +88,7 @@ function CreateCountry(CountryData){
     const Domain = CountryData.tld
     const Currencies = CountryData.currencies
     const CountryTag = CountryData.cca3
-    const NativeName = GetNativeName(CountryData.name.nativeName) //We gotta fight with this later
+    const NativeName = GetNativeName(CountryData.name.nativeName)
     const Borders = CountryData.borders
 
     //Set new template
@@ -189,6 +188,7 @@ fetch('https://restcountries.com/v3.1/all') //Fetch from the url
 //Dropdown
 
 DropDownB.addEventListener('click', (e) => {
+    let DropDownArrow = document.getElementById('Arrow-Down') //Hehehe-haw, had to do this so it doesn't break on first use lol
     if (DropDownM.style.display !== 'flex') {
         DropDownM.style.display = 'flex'
         DropDownArrow.style.transform = 'rotate(180deg)'
@@ -200,7 +200,6 @@ DropDownB.addEventListener('click', (e) => {
 
 function ShowRegion(Reg){ //We display all the ones with that region
     const Countries = document.getElementsByClassName('Country')
-    DropDownArrow.style.transform = 'rotate(0deg)'
     for (i=0;i<Countries.length;i++){
         if (Reg === 'All') {
             Countries[i].style.display = 'flex'
@@ -258,6 +257,7 @@ function ChangeMode() {
     let GetBG = document.getElementsByClassName('BG')
     let GetTx = document.getElementsByClassName('Txt')
     let InverseImg = document.getElementsByClassName('Inverted')
+    let NotInverse = document.getElementsByClassName('NotInverted')
     let BCountries = document.getElementsByClassName('Border-Country')
     let ModeTx = Mode.querySelector('p')
     let Spans = document.querySelectorAll('span')
@@ -282,6 +282,14 @@ function ChangeMode() {
             InverseImg[i].style.filter = 'invert(100%)'
         } else if (CurrentMode === 'light'){
             InverseImg[i].style.filter = 'invert(0%)'
+        }
+    }
+
+    for (i=0;i<NotInverse.length;i++){
+        if (CurrentMode === 'dark'){
+            NotInverse[i].style.filter = 'invert(0%)'
+        } else if (CurrentMode === 'light'){
+            NotInverse[i].style.filter = 'invert(100%)'
         }
     }
 
